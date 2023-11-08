@@ -3,12 +3,12 @@ const { getContacts, addContact, save, removeContact } = require("./contact");
 
 const contactsRouter = express.Router();
 
-app.get("/", (req, res) => {
+contactsRouter.get("/", (req, res) => {
   const contacts = getContacts();
   res.json(contacts);
 });
 
-app.post("/", (req, res) => {
+contactsRouter.post("/", (req, res) => {
   addContact({
     name: req.query.name,
     number: req.query.number,
