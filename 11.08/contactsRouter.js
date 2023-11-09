@@ -10,18 +10,23 @@ contactsRouter.get("/", (req, res) => {
 
 contactsRouter.post("/", (req, res) => {
   addContact({
-    name: req.query.name,
-    number: req.query.number,
+    name: req.body.name,
+    number: req.body.number,
     isFavorite: false,
   });
   save();
   res.status(201).end();
 });
 
-contactsRouter.delete("/", (req, res) => {
-  removeContact(req.query.id);
+contactsRouter.delete("/:id", (req, res) => {
+  removeContact(req.params.id);
   save();
   res.status(200).end();
 });
 
+contactsRouter.patch("/:id", (req, res) => {
+  setFavorite(req.params.id, req.body.isFavorite);
+  save();
+  res.status(200).end();
+});
 module.exports = contactsRouter;
