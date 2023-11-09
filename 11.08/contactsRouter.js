@@ -1,7 +1,15 @@
 const express = require("express");
-const { getContacts, addContact, save, removeContact } = require("./contact");
+const {
+  getContacts,
+  addContact,
+  save,
+  removeContact,
+  setFavorite,
+} = require("./contact");
+const morgan = require("morgan");
 
 const contactsRouter = express.Router();
+contactsRouter.use(morgan("common"));
 
 contactsRouter.get("/", (req, res) => {
   const contacts = getContacts();

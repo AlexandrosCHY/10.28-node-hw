@@ -29,15 +29,16 @@ function save() {
 
 // 4. remove contact
 function removeContact(id) {
-  const contacts = getContacts();
-  contacts = contacts.filter((contact) => contact.id !== id);
+  phonebook.contacts = phonebook.contacts.filter(
+    (contact) => contact.id !== id
+  );
 }
 
 // 4. set favorite
-function setFavorite(id, isfavorite) {
+function setFavorite(id, isFavorite) {
   const contacts = getContacts();
   const contact = contacts.find((contact) => contact.id === id);
-  contact.isFavorite = isfavorite;
+  contact.isFavorite = isFavorite;
 }
 
 // 4. favorite list
